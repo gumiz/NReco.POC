@@ -26,7 +26,9 @@ namespace Nreco.Controllers
 		public FileContentResult GetPdf()
 		{
 			var htmlToPdf = new NReco.PdfGenerator.HtmlToPdfConverter();
-			var pdfBytes = htmlToPdf.GeneratePdf(GetSamplePdfString(200));
+			htmlToPdf.TocHeaderText = "Table of content";
+			htmlToPdf.GenerateToc = true;
+			var pdfBytes = htmlToPdf.GeneratePdf(GetSamplePdfString(20));
 			return File(pdfBytes, "application/pdf", "NRecoTestFile.pdf");
 		}
 
@@ -44,7 +46,10 @@ namespace Nreco.Controllers
 			return @"<html>
 <head>
 	<meta http-equiv='content-type' content='text/html; charset=utf-8' />
-	<style>table { border:1px solid silver; border-collapse:collapse;} table td { border-bottom:1px solid silver; }</style>
+	<style>
+		table { border:1px solid silver; border-collapse:collapse;} table td { border-bottom:1px solid silver; }
+		table, tr, td, th, tbody, thead, tfoot { page-break-inside: avoid !important; }
+	</style>
 </head>
 	<body>
 		<h1 style='text-align:center;'>Order #23</h1>
@@ -85,11 +90,15 @@ namespace Nreco.Controllers
 
 		private string GetSampleRow(int rowNumber)
 		{
-			return $@"<tr>
+			var result = "";
+			if (rowNumber % 15 == 0)
+				result += $"</table><div style='page-break-after:always'></div><h1>Header number {rowNumber/15:0000000}</h1><table>";
+			result += $@"<tr>
 				<td>{rowNumber:0000000}</td>
 				<td><b>Sample name</b></td>
 				<td><i>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui</i></td>
 			</tr>";
+			return result;
 		}
 	}
 }
