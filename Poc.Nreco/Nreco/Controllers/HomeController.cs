@@ -119,6 +119,11 @@ namespace Nreco.Controllers
 			</div>
 		</div>
 		<div style='clear:both;'></div>
+		<div>
+			<b>Order details</b>
+			<p>Lorem ipsum dolor sit amet, ut massa ipsum orci ornare tempus rhoncus, tincidunt mauris, nisl enim eu condimentum dolor orci maecenas, et augue, quis augue eget pellentesque. Facilisis commodo sit. Nonummy laoreet nec. Est a aenean interdum luctus, mauris vestibulum lectus, pulvinar quia amet, vel leo nisl. Elit dictum praesent, nibh non, donec adipiscing. Pellentesque suspendisse in a felis vel eros, convallis massa quis metus viverra ligula, mattis tellus massa odio enim aliquip. Arcu fermentum erat erat ante eros. Dui in suscipit amet orci faucibus, nibh volutpat, hac error nec dolor, turpis urna, mi elit mi amet suscipit.
+Integer lobortis ea praesent arcu mauris, tempus fringilla odio arcu porttitor urna. Amet ut amet, aliquam metus nec placeat conubia dictum, ipsum libero, lacus pharetra nulla montes, vestibulum nunc vel. Eget mattis amet ultrices. Leo justo justo amet, vitae dapibus ac mi. Dictumst viverra. Mauris feugiat ultrices felis ad. Id faucibus id ac felis ante sed, accumsan quisque, ullamcorper lorem, lectus etiam. Lectus posuere penatibus, rutrum aut ut, vel velit dolor consectetuer pede purus lorem. Metus vel quisque sapien lorem pretium aenean.</p>
+		</div>
 		<br /><br />
 		<div style='page-break-after:always'></div>
 		{images}
@@ -155,7 +160,7 @@ namespace Nreco.Controllers
 		private string GetSampleRow(int rowNumber)
 		{
 			var result = "";
-			if (rowNumber % 35 == 0)
+			if (rowNumber > 0 && rowNumber % 35 == 0)
 				result += $"</tbody></table><div style='page-break-after:always'></div><h1>Header number {rowNumber/15:0000000}</h1><table><thead><tr><th colspan='3'>Table header</th></tr><tr><th>Number</th><th>Name</th><th>Description</th></tr></thead><tbody>";
 			result += $@"<tr>
 				<td>{rowNumber:0000000}</td>
