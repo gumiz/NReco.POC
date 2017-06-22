@@ -1,0 +1,5 @@
+usefull commands:
+- InstallUtil.exe Nreco.Win.exe
+- InstallUtil.exe /u Nreco.Win.exe
+- tasklist
+- taskkill /f /PID ??????
