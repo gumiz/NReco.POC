@@ -53,7 +53,7 @@ namespace PrintEngine
 		{
 			var result = GetSampleHtmlSchema();
 			var rows = "";
-			for (var i = 0; i < numberOfPages * 20; i++)
+			for (var i = 0; i < numberOfPages * 25; i++)
 				rows += GetSampleRow(i);
 			return result.Replace("{row}", rows).Replace("{images}", GetSampleImagesString());
 		}

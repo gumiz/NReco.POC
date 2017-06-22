@@ -7,6 +7,7 @@ namespace Nreco.Win
 	{
 
 		private const int NumberOfPagesToGenerate = 50;
+		private const int WinServiceTimeIntervalInSeconds = 10;
 
 		private readonly EventLog _eventLog1;
 		private int _fileId;
@@ -17,7 +18,7 @@ namespace Nreco.Win
 			var pdfBytes = new PrintEngine.PdfEngine().GeneratePdf(NumberOfPagesToGenerate);
 			System.IO.File.WriteAllBytes(filename, pdfBytes);
 
-			_eventLog1.WriteEntry($"Generating sample PDF file [{filename}] done", EventLogEntryType.Information);
+			_eventLog1.WriteEntry($"File: {filename} saved", EventLogEntryType.Information);
 		}
 
 		public NrecoService()
@@ -37,7 +38,7 @@ namespace Nreco.Win
 		{
 			_eventLog1.WriteEntry("NReco.POC.WinService started");
 			System.Timers.Timer timer = new System.Timers.Timer();
-			timer.Interval = 10000; // 1000 = 1 second
+			timer.Interval = 1000 * WinServiceTimeIntervalInSeconds;
 			timer.Elapsed += OnTimer;
 			timer.Start();
 		}
