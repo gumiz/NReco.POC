@@ -128,7 +128,6 @@ Integer lobortis ea praesent arcu mauris, tempus fringilla odio arcu porttitor u
 			Signed: Saturday, June 3, 2017 12:06 PM<br />
 			From IP: 31.134.60.75
 			Signature:<br />
-			<img src='https://www.nrecosite.com/img/pdfgenerator/donald_sign.jpg'/>
 		</div>
 		<div style='float:left;'>Sincerely,<br />Donald</div>
 		<div style='clear:both;'></div>
