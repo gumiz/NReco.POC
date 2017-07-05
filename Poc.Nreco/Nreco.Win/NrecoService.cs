@@ -15,7 +15,9 @@ namespace Nreco.Win
 		public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
 		{
 			var filename = $@"c:\temp\NRecoSample{_fileId++:D5}.pdf";
+			_eventLog1.WriteEntry($"GeneratePdf operation started", EventLogEntryType.Information);
 			var pdfBytes = new PrintEngine.PdfEngine().GeneratePdf(NumberOfPagesToGenerate);
+			_eventLog1.WriteEntry($"GeneratePdf operation finished", EventLogEntryType.Information);
 			System.IO.File.WriteAllBytes(filename, pdfBytes);
 
 			_eventLog1.WriteEntry($"File: {filename} saved", EventLogEntryType.Information);

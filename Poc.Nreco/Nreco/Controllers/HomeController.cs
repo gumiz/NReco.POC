@@ -23,7 +23,7 @@ namespace Nreco.Controllers
 
 		public FileContentResult GetPdf()
 		{
-			var pdfBytes = new PrintEngine.PdfEngine().GeneratePdf(100);
+			var pdfBytes = new PrintEngine.PdfEngine().GeneratePdf(170);
 			return File(pdfBytes, "application/pdf", "NRecoTestFile.pdf");
 		}
 
